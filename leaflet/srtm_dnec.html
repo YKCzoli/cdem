@@ -44,18 +44,18 @@
     <script src="js/topojson.min.js"></script>
      <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    
+
     <script>
 	    function onEachFeature(feature, layer) {
 	        var mirror = 'http://ftp2.cits.rncan.gc.ca/pub/geobase/official/cded/';
 	        var data_dir = '50k_dem/'
 	        var img_dir = 'images_50k/'
 	        var name =  feature.properties.NUMFEUILLE;
-	        
+
 	        var dir = name.slice(0,3)
 	        var file = mirror + data_dir + dir + '/' + name.toLowerCase() + '.zip'
 	        var quicklook =  mirror + img_dir + 'dnec_' + name.toLowerCase() + '.jpg'
-	
+
 	        var html = '<div id="pop">'+
 	                   '    You clicked tile <strong>' + name + '</strong>!<br>'+
 	                   '    <img id="quicklook" src="'+ quicklook +'" class="img-thumbnail" width="200" height="200">'+
@@ -70,7 +70,7 @@
 
 
         bounds = L.latLngBounds([39, -142], [84, -52]);
-        
+
         var map = L.map('map', {
             center: [67, -95],
             maxBounds: bounds,
@@ -78,7 +78,7 @@
             zoom: 3,
             minZoom: 3,
             maxZoom: 7
-        });   
+        });
 
         map.spin(true);
 	    var osm_url = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -86,20 +86,16 @@
         var OpenStreetMap = L.tileLayer(osm_url, {id: 'MapID', attribution: attribution})
                  .addTo(map);
 
-	    var mq_aerial_url = 'http://oatile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg'
-        var attribution_mq = 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Portions Courtesy NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency'
-        var MapQuestOpen_Aerial = L.tileLayer(mq_aerial_url, {id: 'MapID', attribution: attribution_mq, subdomains: '1234'});
-
         var esri_url = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}';
         var attribution_esri = 'Tiles &copy; Esri &mdash; Source: Esri';
-        var Esri_WorldShadedRelief = L.tileLayer(esri_url, {id: 'MapID', attribution: attribution_esri, maxZoom: 13});       
+        var Esri_WorldShadedRelief = L.tileLayer(esri_url, {id: 'MapID', attribution: attribution_esri, maxZoom: 13});
 
         var topojsonPolyOptions = {
 			"color": "#1C1C1C",
 			"weight": 0.2,
 			"fillOpacity": 0.1
-		};	
-        
+		};
+
         topojsonLayer = L.geoJson(null,{
 			style: topojsonPolyOptions,
 			onEachFeature:onEachFeature
@@ -108,7 +104,7 @@
         queue()
             .defer(d3.json, 'data/dnec.json')
             .await(addToMap);
-        
+
         function addToMap(error, obj) {
             var data = topojson.object(obj, obj.objects.dnec).geometries;
             topojsonLayer.addData(data);
@@ -121,11 +117,11 @@
             "ESRI-Shaded" : Esri_WorldShadedRelief,
 		    "MapQuest-Aerial" : MapQuestOpen_Aerial
 		};
-		
+
 		var overlayMaps = {
 		    "CDEC/DNEC Grid": topojsonLayer
 		};
-	    
+
         L.control.layers(baseMaps, overlayMaps).addTo(map);
 
     </script>
