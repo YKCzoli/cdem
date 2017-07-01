@@ -104,7 +104,9 @@
     var cdem = L.tileLayer.wms(cdem_url, {
       id: 'MapID',
       attribution: attribution_cdem,
-      layers: 'cdem.color-shaded-relief'
+      layers: 'cdem.color-shaded-relief',
+      transparent: true,
+      format: 'image/png'
     }).addTo(map);
 
     var esri_url = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}';
