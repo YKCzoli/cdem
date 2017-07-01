@@ -86,6 +86,8 @@
         var OpenStreetMap = L.tileLayer(osm_url, {id: 'MapID', attribution: attribution})
                  .addTo(map);
 
+        var cdem = L.tileLayer.wms('http://maps.geogratis.gc.ca/wms/elevation_en?', {id: 'MapID', layers: 'cdem.color-shaded-relief', attribution: attribution}).addTo(map);
+
         var esri_url = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}';
         var attribution_esri = 'Tiles &copy; Esri &mdash; Source: Esri';
         var Esri_WorldShadedRelief = L.tileLayer(esri_url, {id: 'MapID', attribution: attribution_esri, maxZoom: 13});
@@ -115,7 +117,7 @@
         var baseMaps = {
 		    "OpenStreetMap": OpenStreetMap,
             "ESRI-Shaded" : Esri_WorldShadedRelief,
-		    "MapQuest-Aerial" : MapQuestOpen_Aerial
+            "Canadian Digital Elevation Relief": cdem
 		};
 
 		var overlayMaps = {
