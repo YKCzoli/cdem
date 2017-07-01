@@ -74,7 +74,6 @@
       layer.bindPopup(popup);
     };
 
-
     bounds = L.latLngBounds([39, -142], [84, -52]);
 
     var map = L.map('map', {
@@ -152,8 +151,8 @@
     };
 
     var overlayMaps = {
-      "Canadian Digital Elevation Relief": cdem,
-      "CDEC/DNEC Grid": topojsonLayer
+      "CDEC/DNEC Grid": topojsonLayer,
+      "Canadian Digital Elevation Relief": cdem
     };
 
     L.control.layers(baseMaps, overlayMaps).addTo(map);
