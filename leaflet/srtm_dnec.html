@@ -50,7 +50,7 @@
 
   <script>
     function onEachFeature(feature, layer) {
-      var mirror = 'http://ftp.geogratis.gc.ca/pub/nrcan_rncan/elevation/geobase_cdem_dnec/';
+      var mirror = 'http://ftp.geogratis.gc.ca/pub/nrcan_rncan/elevation/geobase_cded_dnec/';
       var data_dir = '50k_dem/'
       var img_dir = 'images_50k/'
       var name = feature.properties.NUMFEUILLE;
@@ -83,7 +83,7 @@
       bounceAtZoomLimits: false,
       zoom: 3,
       minZoom: 3,
-      maxZoom: 7
+      maxZoom: 12
     });
 
     map.spin(true);
