@@ -5,10 +5,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CDED/DNEC 50k Tile Grabber">
+  <meta name="description" content="cdem/DNEC 50k Tile Grabber">
   <meta name="author" content="Vincent Sarago">
 
-  <title>CDED/DNEC 50k Tile Grabber</title>
+  <title>cdem/DNEC 50k Tile Grabber</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +22,10 @@
     padding: 0;
     margin: 0;
   }
+
+  .leaflet-container {
+    background-color:rgba(255,255,255,1.0);
+}
 
   html,
   body,
@@ -50,7 +54,7 @@
 
   <script>
     function onEachFeature(feature, layer) {
-      var mirror = 'http://ftp.geogratis.gc.ca/pub/nrcan_rncan/elevation/geobase_cded_dnec/';
+      var mirror = 'http://ftp.geogratis.gc.ca/pub/nrcan_rncan/elevation/geobase_cdem_dnec/';
       var data_dir = '50k_dem/'
       var img_dir = 'images_50k/'
       var name = feature.properties.NUMFEUILLE;
@@ -95,10 +99,12 @@
       })
       .addTo(map);
 
-    var cdem = L.tileLayer.wms('http://maps.geogratis.gc.ca/wms/elevation_en?', {
+    var cdem_url = 'http://maps.geogratis.gc.ca/wms/elevation_en?';
+    var attribution_cdem = '<a href="http://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>';
+    var cdem = L.tileLayer.wms(cdem_url, {
       id: 'MapID',
-      layers: 'cdem.color-shaded-relief',
-      attribution: attribution
+      attribution: attribution_cdem,
+      layers: 'cdem.color-shaded-relief'
     }).addTo(map);
 
     var esri_url = 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}';
