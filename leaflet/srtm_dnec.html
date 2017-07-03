@@ -76,7 +76,7 @@
 
     function onEachProvTerr(feature, layer) {
       layer.on('click', function(){
-        console.log(layer);
+        map.flyTo(layer.getBounds().getCenter(), 4);
       })
     }
 
@@ -84,7 +84,7 @@
 
     var map = L.map('map', {
       center: [67, -95],
-      maxBounds: bounds,
+      // maxBounds: bounds,
       bounceAtZoomLimits: false,
       zoom: 3,
       minZoom: 3,
