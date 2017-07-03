@@ -2,3 +2,5 @@
 .DS_Store
 
 .project
+
+leaflet/data/provterr.json

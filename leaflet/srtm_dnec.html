@@ -35,7 +35,7 @@
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
   <!-- Leaflet -->
-  <script src="js/leaflet-src.js"></script>
+  <script src="js/leaflet.js"></script>
   <script src="js/leaflet.spin.js"></script>
   <!-- spin -->
   <script src="js/spin.min.js"></script>
@@ -73,6 +73,12 @@
         .setContent(html);
       layer.bindPopup(popup);
     };
+
+    function onEachProvTerr(feature, layer) {
+      layer.on('click', function(){
+        console.log(layer);
+      })
+    }
 
     bounds = L.latLngBounds([39, -142], [84, -52]);
 
@@ -121,25 +127,40 @@
       format: 'image/png'
     }).addTo(map);
 
-    var topojsonPolyOptions = {
+    var dnecPolyOptions = {
       "color": "#1C1C1C",
       "weight": 0.2,
       "fillOpacity": 0.1
     };
 
-    topojsonLayer = L.geoJson(null, {
-      style: topojsonPolyOptions,
+    var provterrPolyOptions = {
+      "color": "#1C1C1C",
+      "weight": 0.4,
+      "fillOpacity": 0.0
+    };
+
+    topo_dnec = L.geoJson(null, {
+      style: dnecPolyOptions,
       onEachFeature: onEachFeature
+    });
+
+    topo_provterr = L.geoJson(null, {
+      style: provterrPolyOptions,
+      onEachFeature: onEachProvTerr
     });
 
     queue()
       .defer(d3.json, 'data/dnec.json')
+      .defer(d3.json, 'data/provterrito_topo.json')
       .await(addToMap);
 
-    function addToMap(error, obj) {
-      var data = topojson.object(obj, obj.objects.dnec).geometries;
-      topojsonLayer.addData(data);
-      topojsonLayer.addTo(map);
+    function addToMap(error, dnec, provterr) {
+      var dnec_layer = topojson.object(dnec, dnec.objects.dnec).geometries;
+      topo_dnec.addData(dnec_layer);
+      // topo_dnec.addTo(map);
+      var provterr_layer = topojson.object(provterr, provterr.objects.provterr).geometries;
+      topo_provterr.addData(provterr_layer);
+      topo_provterr.addTo(map);
       map.spin(false);
     }
 
@@ -151,7 +172,8 @@
     };
 
     var overlayMaps = {
-      "CDEC/DNEC Grid": topojsonLayer,
+      "CDEC/DNEC Grid": topo_dnec,
+      "Provinces and Territories": topo_provterr,
       "Canadian Digital Elevation Relief": cdem
     };
 
