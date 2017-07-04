@@ -151,11 +151,10 @@
 
     queue()
       .defer(d3.json, 'data/dnec.json')
-      .defer(d3.json, 'data/provterrito_topo3.json')
+      .defer(d3.json, 'data/provterrito_topo.json')
       .await(addToMap);
 
     function addToMap(error, dnec, provterr) {
-      console.log(provterr)
       var dnec_layer = topojson.object(dnec, dnec.objects.dnec).geometries;
       topo_dnec.addData(dnec_layer);
       // topo_dnec.addTo(map);
