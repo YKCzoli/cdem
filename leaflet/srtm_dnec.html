@@ -56,7 +56,10 @@
       "New Brunswick": 6,
       "Nova Scotia": 6,
       "Prince Edward Island": 8
-    }
+    };
+
+    var attribution_OGLC = '<a href="http://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>';
+    var attribution_NE = '<a href="http://www.naturalearthdata.com/">Made with Natural Earth</a>';
 
     function onEachFeature(feature, layer) {
       var mirror = 'http://ftp.geogratis.gc.ca/pub/nrcan_rncan/elevation/geobase_cded_dnec/';
@@ -125,10 +128,9 @@
     });
 
     var cdem_url = 'http://maps.geogratis.gc.ca/wms/elevation_en?';
-    var attribution_cdem = '<a href="http://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>';
     var cdem = L.tileLayer.wms(cdem_url, {
       id: 'MapID',
-      attribution: attribution_cdem,
+      attribution: attribution_OGLC,
       layers: 'cdem.color-shaded-relief',
       transparent: true,
       format: 'image/png'
@@ -151,10 +153,14 @@
       onEachFeature: onEachFeature
     });
 
+    topo_dnec.getAttribution = function() {return attribution_OGLC};
+
     topo_provterr = L.geoJson(null, {
       style: provterrPolyOptions,
       onEachFeature: onEachProvTerr
     });
+
+    topo_provterr.getAttribution = function() {return attribution_NE};
 
     queue()
       .defer(d3.json, 'data/dnec.json')
