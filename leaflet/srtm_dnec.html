@@ -49,6 +49,15 @@
   <script src="js/bootstrap.min.js"></script>
 
   <script>
+
+    var flyToZoom = {
+      "Northwest Territories": 4,
+      "Nunavut": 4,
+      "New Brunswick": 6,
+      "Nova Scotia": 6,
+      "Prince Edward Island": 8
+    }
+
     function onEachFeature(feature, layer) {
       var mirror = 'http://ftp.geogratis.gc.ca/pub/nrcan_rncan/elevation/geobase_cded_dnec/';
       var data_dir = '50k_dem/'
@@ -76,7 +85,8 @@
 
     function onEachProvTerr(feature, layer) {
       layer.on('click', function(){
-        map.flyTo(layer.getBounds().getCenter(), 4);
+        console.log(flyToZoom[feature.properties.name] || 5);
+        map.flyTo(layer.getBounds().getCenter(), (flyToZoom[feature.properties.name] || 5));
       })
     }
 
@@ -84,7 +94,6 @@
 
     var map = L.map('map', {
       center: [67, -95],
-      // maxBounds: bounds,
       bounceAtZoomLimits: false,
       zoom: 4,
       minZoom: 3,
