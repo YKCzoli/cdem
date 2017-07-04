@@ -86,7 +86,7 @@
       center: [67, -95],
       // maxBounds: bounds,
       bounceAtZoomLimits: false,
-      zoom: 3,
+      zoom: 4,
       minZoom: 3,
       maxZoom: 12
     });
@@ -127,6 +127,16 @@
       format: 'image/png'
     }).addTo(map);
 
+    var canvec_url = 'http://maps.geogratis.gc.ca/wms/canvec_en?';
+    var attribution_canvec = '<a href="http://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>';
+    var canvec = L.tileLayer.wms(canvec_url, {
+      id: 'MapID',
+      attribution: attribution_canvec,
+      layers: 'boundary_small',
+      transparent: true,
+      format: 'image/png'
+    }).addTo(map);
+
     var dnecPolyOptions = {
       "color": "#1C1C1C",
       "weight": 0.2,
@@ -151,14 +161,15 @@
 
     queue()
       .defer(d3.json, 'data/dnec.json')
-      .defer(d3.json, 'data/provterrito_topo.json')
+      .defer(d3.json, 'data/provterrito_topo3.json')
       .await(addToMap);
 
     function addToMap(error, dnec, provterr) {
+      console.log(provterr)
       var dnec_layer = topojson.object(dnec, dnec.objects.dnec).geometries;
       topo_dnec.addData(dnec_layer);
       // topo_dnec.addTo(map);
-      var provterr_layer = topojson.object(provterr, provterr.objects.provterr).geometries;
+      var provterr_layer = topojson.object(provterr, provterr.objects.provterrNEAdmin1).geometries;
       topo_provterr.addData(provterr_layer);
       topo_provterr.addTo(map);
       map.spin(false);
@@ -174,7 +185,8 @@
     var overlayMaps = {
       "CDEC/DNEC Grid": topo_dnec,
       "Provinces and Territories": topo_provterr,
-      "Canadian Digital Elevation Relief": cdem
+      "Canadian Digital Elevation Relief": cdem,
+      "canvec boundary": canvec
     };
 
     L.control.layers(baseMaps, overlayMaps).addTo(map);
