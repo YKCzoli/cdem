@@ -127,16 +127,6 @@
       format: 'image/png'
     }).addTo(map);
 
-    var canvec_url = 'http://maps.geogratis.gc.ca/wms/canvec_en?';
-    var attribution_canvec = '<a href="http://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>';
-    var canvec = L.tileLayer.wms(canvec_url, {
-      id: 'MapID',
-      attribution: attribution_canvec,
-      layers: 'boundary_small',
-      transparent: true,
-      format: 'image/png'
-    }).addTo(map);
-
     var dnecPolyOptions = {
       "color": "#1C1C1C",
       "weight": 0.2,
@@ -186,7 +176,6 @@
       "CDEC/DNEC Grid": topo_dnec,
       "Provinces and Territories": topo_provterr,
       "Canadian Digital Elevation Relief": cdem,
-      "canvec boundary": canvec
     };
 
     L.control.layers(baseMaps, overlayMaps).addTo(map);
