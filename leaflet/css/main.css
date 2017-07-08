@@ -1,0 +1,22 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+#map {
+  height: 100%;
+}
+
+.leaflet-container {
+  background-color:rgba(0,0,0,0.9);
+}
+
+.sidebar-content, .sidebar-tabs, .sidebar-header, .sidebar-tabs>ul>li>a {
+  background-color:rgba(0,0,0,0.8);
+}
+
+.elevation-info {
+  color: white;
+}
