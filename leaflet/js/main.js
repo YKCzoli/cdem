@@ -13,13 +13,13 @@ var attribution_NE = '<a href="http://www.naturalearthdata.com/">Made with Natur
 
 function onEachFeature(feature, layer) {
   var mirror = 'http://ftp.geogratis.gc.ca/pub/nrcan_rncan/elevation/geobase_cded_dnec/';
-  var data_dir = '50k_dem/'
-  var img_dir = 'images_50k/'
+  var data_dir = '50k_dem/';
+  var img_dir = 'images_50k/';
   var name = feature.properties.NUMFEUILLE;
 
-  var dir = name.slice(0, 3)
-  var file = mirror + data_dir + dir + '/' + name.toLowerCase() + '.zip'
-  var quicklook = mirror + img_dir + 'dnec_' + name.toLowerCase() + '.jpg'
+  var dir = name.slice(0, 3);
+  var file = mirror + data_dir + dir + '/' + name.toLowerCase() + '.zip';
+  var quicklook = mirror + img_dir + 'dnec_' + name.toLowerCase() + '.jpg';
 
   var html = '<div id="pop">' +
     '    You clicked tile <strong>' + name + '</strong>!<br>' +
@@ -34,15 +34,15 @@ function onEachFeature(feature, layer) {
     })
     .setContent(html);
   layer.bindPopup(popup);
-};
+}
 
 function onEachProvTerr(feature, layer) {
   layer.on('click', function() {
     map.flyTo(layer.getBounds().getCenter(), (flyToZoom[feature.properties.name] || 5));
-  })
+  });
 }
 
-bounds = L.latLngBounds([39, -142], [84, -52]);
+var bounds = L.latLngBounds([39, -142], [84, -52]);
 
 var map = L.map('map', {
   center: [70.451180, -135.081963],
@@ -66,7 +66,7 @@ var OpenStreetMap = L.tileLayer(osm_url, {
 });
 
 var opentopomap_url = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
-var attribution_opentopomap = 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+var attribution_opentopomap = 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)';
 var OpenTopoMap = L.tileLayer(opentopomap_url, {
   attribution: attribution_opentopomap
 });
@@ -77,7 +77,7 @@ var OpenStreetMap_BlackAndWhite = L.tileLayer(osm_blackwhite_url, {
 });
 
 var esri_worldimagery_url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
-var attribution_esriworldimagery = 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+var attribution_esriworldimagery = 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
 var Esri_WorldImagery = L.tileLayer(esri_worldimagery_url, {
   attribution: attribution_esriworldimagery
 });
@@ -103,25 +103,26 @@ var provterrPolyOptions = {
   "fillOpacity": 0.0
 };
 
-topo_dnec = L.geoJson(null, {
+var topo_dnec = L.geoJson(null, {
   style: dnecPolyOptions,
   onEachFeature: onEachFeature
 });
 
 topo_dnec.getAttribution = function() {
-  return attribution_OGLC
+  return attribution_OGLC;
 };
 
-topo_provterr = L.geoJson(null, {
+var topo_provterr = L.geoJson(null, {
   style: provterrPolyOptions,
   onEachFeature: onEachProvTerr
 });
 
 topo_provterr.getAttribution = function() {
-  return attribution_NE
+  return attribution_NE;
 };
 
 queue()
+
   .defer(d3.json, 'data/dnec.json')
   .defer(d3.json, 'data/provterrito_topo.json')
   .await(addToMap);
