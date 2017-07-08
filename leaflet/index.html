@@ -35,6 +35,18 @@
     height: 100%;
   }
 
+  .leaflet-container {
+    background-color:rgba(0,0,0,0.9);
+  }
+
+  .sidebar-content, .sidebar-tabs, .sidebar-header, .sidebar-tabs>ul>li>a {
+    background-color:rgba(0,0,0,0.8);
+  }
+
+  .elevation-info {
+    color: white;
+  }
+
 </style>
 
 <body>
@@ -43,7 +55,6 @@
       <div class="sidebar-tabs">
           <ul role="tablist">
               <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
-              <li><a href="https://github.com/YKCzoli" role="tab" target="_blank"><i class="fa fa-github"></i></a></li>
           </ul>
 
       </div>
@@ -55,21 +66,7 @@
                   Canadian Elevation
                   <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
               </h1>
-
-              <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-          </div>
-
-          <div class="sidebar-pane" id="profile">
-              <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-          </div>
-
-          <div class="sidebar-pane" id="messages">
-              <h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-          </div>
-
-          <div class="sidebar-pane" id="settings">
-              <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+              <p class="elevation-info">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
           </div>
       </div>
   </div>
@@ -150,16 +147,15 @@
 
     map.spin(true);
 
-    var CartoDB_DarkMatterNoLabels = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png', {
-    	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-    	subdomains: 'abcd',
-    	maxZoom: 19
+    var cardtodb_url = 'http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png';
+    var attribution_carto = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
+    var CartoDB_DarkMatterNoLabels = L.tileLayer(cardtodb_url, {
+      attribution: attribution_carto
     }).addTo(map);
 
     var osm_url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var attribution_osm = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
     var OpenStreetMap = L.tileLayer(osm_url, {
-        id: 'MapID',
         attribution: attribution_osm
     });
 
@@ -247,6 +243,8 @@
     L.control.layers(baseMaps, overlayMaps).addTo(map);
 
     var sidebar = L.control.sidebar('sidebar').addTo(map);
+
+    sidebar.open('home');
 
   </script>
 </body>
