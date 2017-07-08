@@ -1,4 +1,5 @@
 'use strict';
+
 var flyToZoom = {
   "Northwest Territories": 4,
   "Nunavut": 4,
