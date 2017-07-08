@@ -13,8 +13,14 @@
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- leaflet CSS -->
+  <!-- Leaflet CSS -->
   <link href="css/leaflet.css" rel="stylesheet">
+
+  <!--font-awesome-->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Leaflet sidebar css -->
+  <link rel="stylesheet" href="../css/leaflet-sidebar.css" />
 </head>
 
 <style>
@@ -31,7 +37,32 @@
 </style>
 
 <body>
-  <div id="map"></div>
+  <div id="sidebar" class="sidebar collapsed">
+      <!-- Nav tabs -->
+      <div class="sidebar-tabs">
+          <ul role="tablist">
+              <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+              <li><a href="https://github.com/YKCzoli" role="tab" target="_blank"><i class="fa fa-github"></i></a></li>
+          </ul>
+
+      </div>
+
+      <!-- Tab panes -->
+      <div class="sidebar-content">
+          <div class="sidebar-pane" id="home">
+              <h1 class="sidebar-header">
+                  Canadian Elevation
+                  <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+              </h1>
+
+              <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+          </div>
+
+      </div>
+  </div>
+
+  <div id="map" class="sidebar-map"></div>
+
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
   <!-- Leaflet -->
@@ -47,6 +78,8 @@
   <script src="js/topojson.min.js"></script>
   <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
+  <!--Leaflet Sidebar-->
+  <script src="../js/leaflet-sidebar.js"></script>
 
   <script>
 
@@ -192,6 +225,9 @@
     };
 
     L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+    var sidebar = L.control.sidebar('sidebar').addTo(map);
+
   </script>
 </body>
 
