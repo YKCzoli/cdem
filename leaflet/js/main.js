@@ -164,17 +164,23 @@ var sidebar = L.control.sidebar('sidebar').addTo(map);
 
 sidebar.open('home');
 
-// Dynamic sidebar with selection
-// document
-//     .getElementById('target')
-//     .addEventListener('change', function () {
-//         'use strict';
-//         var vis = document.querySelector('.vis'),
-//             target = document.getElementById(this.value);
-//         if (vis !== null) {
-//             vis.className = 'inv';
-//         }
-//         if (target !== null ) {
-//             target.className = 'vis';
-//         }
-// });
+// some hack to avoid delay of bootstrap-select render
+// found at: https://stackoverflow.com/questions/23251488/bootstrap-select-plugin-how-to-avoid-flickering
+$('.selectpicker').selectpicker({
+});
+
+// Dynamic sidebar  and map zoom with selection
+document
+    .getElementById('adminpicker')
+    .addEventListener('change', function () {
+        'use strict';
+        flyToAdmin(this.value);
+        var vis = document.querySelector('.vis'),
+            target = document.getElementById(this.value);
+        if (vis !== null) {
+            vis.className = 'inv';
+        }
+        if (target !== null ) {
+            target.className = 'vis';
+        }
+});
