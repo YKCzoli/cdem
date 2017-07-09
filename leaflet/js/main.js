@@ -18,31 +18,6 @@ function flyToAdmin(admin_name) {
 var attribution_OGLC = '<a href="http://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>';
 var attribution_NE = '<a href="http://www.naturalearthdata.com/">Made with Natural Earth</a>';
 
-function onEachFeature(feature, layer) {
-  var mirror = 'http://ftp.geogratis.gc.ca/pub/nrcan_rncan/elevation/geobase_cded_dnec/';
-  var data_dir = '50k_dem/';
-  var img_dir = 'images_50k/';
-  var name = feature.properties.NUMFEUILLE;
-
-  var dir = name.slice(0, 3);
-  var file = mirror + data_dir + dir + '/' + name.toLowerCase() + '.zip';
-  var quicklook = mirror + img_dir + 'dnec_' + name.toLowerCase() + '.jpg';
-
-  var html = '<div id="pop">' +
-    '    You clicked tile <strong>' + name + '</strong>!<br>' +
-    '    <img id="quicklook" src="' + quicklook + '" class="img-thumbnail" width="200" height="200">' +
-    '    <div>' +
-    '         <a id="tip_button" class="btn btn-small btn-success tip_button" href="' + file + '" target="_blank">Download DNEC Tile</a><br>' +
-    '    </div>' +
-    '</div>';
-  var popup = L.popup({
-      maxWidth: 512,
-      maxHeight: 512
-    })
-    .setContent(html);
-  layer.bindPopup(popup);
-}
-
 function onEachProvTerr(feature, layer) {
   layer.on('click', function() {
     console.log('clicked polygon');
@@ -87,25 +62,10 @@ var cdem = L.tileLayer.wms(cdem_url, {
   format: 'image/png'
 }).addTo(map);
 
-var dnecPolyOptions = {
-  "color": "#1C1C1C",
-  "weight": 0.2,
-  "fillOpacity": 0.1
-};
-
 var provterrPolyOptions = {
   "color": "#1C1C1C",
   "weight": 0.4,
   "fillOpacity": 0.0
-};
-
-var topo_dnec = L.geoJson(null, {
-  style: dnecPolyOptions,
-  onEachFeature: onEachFeature
-});
-
-topo_dnec.getAttribution = function() {
-  return attribution_OGLC;
 };
 
 var topo_provterr = L.geoJson(null, {
@@ -119,14 +79,10 @@ topo_provterr.getAttribution = function() {
 
 queue()
 
-  .defer(d3.json, 'data/dnec.json')
   .defer(d3.json, 'data/provterrito_topo.json')
   .await(addToMap);
 
-function addToMap(error, dnec, provterr) {
-  var dnec_layer = topojson.object(dnec, dnec.objects.dnec).geometries;
-  topo_dnec.addData(dnec_layer);
-  // topo_dnec.addTo(map);
+function addToMap(error, provterr) {
   var provterr_layer = topojson.object(provterr, provterr.objects.provterrNEAdmin1).geometries;
   topo_provterr.addData(provterr_layer);
   topo_provterr.addTo(map);
@@ -140,7 +96,6 @@ var baseMaps = {
 };
 
 var overlayMaps = {
-  "CDEC/DNEC Grid": topo_dnec,
   "Provinces and Territories": topo_provterr,
   "Canadian Digital Elevation Relief": cdem,
 };
