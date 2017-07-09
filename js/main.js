@@ -37,25 +37,27 @@ map.spin(true);
 
 var cardtodb_url = 'http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png';
 var attribution_carto = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
-var CartoDB_DarkMatterNoLabels = L.tileLayer(cardtodb_url, {
-  attribution: attribution_carto
+var Carto = L.tileLayer(cardtodb_url, {
+  attribution: attribution_carto,
+  name: 'Carto'
 }).addTo(map);
 
 var osm_url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 var attribution_osm = '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 var OpenStreetMap = L.tileLayer(osm_url, {
-  attribution: attribution_osm
+  attribution: attribution_osm,
+  name: 'OpenStreetMap'
 });
 
 var esri_worldimagery_url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 var attribution_esriworldimagery = 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
 var Esri_WorldImagery = L.tileLayer(esri_worldimagery_url, {
-  attribution: attribution_esriworldimagery
+  attribution: attribution_esriworldimagery,
+  name: 'Esri_WorldImagery'
 });
 
 var cdem_url = 'http://maps.geogratis.gc.ca/wms/elevation_en?';
 var cdem = L.tileLayer.wms(cdem_url, {
-  id: 'MapID',
   attribution: attribution_OGLC,
   layers: 'cdem.color-shaded-relief',
   transparent: true,
@@ -90,7 +92,7 @@ function addToMap(error, provterr) {
 }
 
 var baseMaps = {
-  "Carto": CartoDB_DarkMatterNoLabels,
+  "Carto": Carto,
   "OpenStreetMap": OpenStreetMap,
   "Esri_WorldImagery": Esri_WorldImagery
 };
@@ -132,8 +134,15 @@ function changeBasemap(overlay) {
     $('#basemaps .side-view-content .side-element .link-on').each(function () {
         $(this).removeClass('on');
     });
-    
+
     $('#' + overlay + ' .link-on').addClass('on');
 
-    baseMaps[overlay].addTo(map);
+    for (i = 0; i < Object.keys(baseMaps).length; i++) {
+      if (baseMaps[Object.keys(baseMaps)[i]].options.name == overlay) {
+        baseMaps[overlay].addTo(map);
+      } else {
+        map.removeLayer(baseMaps[Object.keys(baseMaps)[i]]);
+      }
+    }
+
 }
