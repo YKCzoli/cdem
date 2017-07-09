@@ -72,17 +72,6 @@ var OpenStreetMap = L.tileLayer(osm_url, {
   attribution: attribution_osm
 });
 
-var opentopomap_url = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
-var attribution_opentopomap = 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)';
-var OpenTopoMap = L.tileLayer(opentopomap_url, {
-  attribution: attribution_opentopomap
-});
-
-var osm_blackwhite_url = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png';
-var OpenStreetMap_BlackAndWhite = L.tileLayer(osm_blackwhite_url, {
-  attribution: attribution_osm
-});
-
 var esri_worldimagery_url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
 var attribution_esriworldimagery = 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
 var Esri_WorldImagery = L.tileLayer(esri_worldimagery_url, {
@@ -147,8 +136,6 @@ function addToMap(error, dnec, provterr) {
 var baseMaps = {
   "Carto": CartoDB_DarkMatterNoLabels,
   "OpenStreetMap": OpenStreetMap,
-  "OpenStreetMap: Black & White": OpenStreetMap_BlackAndWhite,
-  "OpenTopoMap": OpenTopoMap,
   "Esri World Imagery": Esri_WorldImagery
 };
 
