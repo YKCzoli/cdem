@@ -167,6 +167,7 @@ sidebar.open('home');
 // some hack to avoid delay of bootstrap-select render
 // found at: https://stackoverflow.com/questions/23251488/bootstrap-select-plugin-how-to-avoid-flickering
 $('.selectpicker').selectpicker({
+  width: "65%"
 });
 
 // Dynamic sidebar  and map zoom with selection
