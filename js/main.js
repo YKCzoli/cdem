@@ -127,20 +127,13 @@ document
         }
 });
 
-function changeOverlay(overlay) {
+function changeBasemap(overlay) {
 
     $('#basemaps .side-view-content .side-element .link-on').each(function () {
         $(this).removeClass('on');
     });
-    console.log(overlay)
-    console.log(baseMaps);
+    
+    $('#' + overlay + ' .link-on').addClass('on');
+
     baseMaps[overlay].addTo(map);
-
-    // $('#' + overlay + ' .link-on').addClass('on');
-    // setStyle(overlay);
-}
-
-function update_basemaps() {
-    overlay = document.getElementsByClassName('link-on on')[0].parentElement.getAttribute('id');
-    setStyle(overlay);
 }
