@@ -35,15 +35,16 @@
     <!-- Nav tabs -->
     <div class="sidebar-tabs">
       <ul role="tablist">
-        <li><a href="#home" role="tab"><i class="fa fa-info"></i></a></li>
+        <li><a href="#info" role="tab"><i class="fa fa-info-circle"></i></a></li>
         <li><a href="#basemaps" role="tab"><i class="fa fa-map-o"></i></a></li>
+        <li><a href="#sliders" role="tab"><i class="fa fa-sliders"></i></a></li>
       </ul>
 
     </div>
 
     <!-- Tab panes -->
     <div class="sidebar-content">
-      <div class="sidebar-pane" id="home">
+      <div class="sidebar-pane" id="info">
         <h1 class="sidebar-header">
                   Canadian Elevation
                   <span class="sidebar-close"><i class="fa fa-times"></i></span>
@@ -65,40 +66,79 @@
           <option>Northwest Territories</option>
           <option>Yukon</option>
           <option>Nunavut</option>
-
         <select>
 
-        <div class="sidebar-pane" id="basemaps">
-            <h1 class="sidebar-header">Basemaps<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-        </div>
-
         <div id="Ontario" class="inv">Ontario</div>
-
         <div id="Quebec" class="inv">Quebec</div>
-
         <div id="Nova Scotia" class="inv">Nova Scotia</div>
-
         <div id="New Brunswick" class="inv">New Brunswick</div>
-
         <div id="Manitoba" class="inv">Manitoba</div>
-
         <div id="British Columbia" class="inv">British Columbia</div>
-
         <div id="Prince Edward Island" class="inv">Prince Edward Island</div>
-
         <div id="Saskatchewan" class="inv">Saksatchewan</div>
-
         <div id="Alberta" class="inv">Alberta</div>
-
         <div id="Newfoundland and Labrador" class="inv">Newfoundland and Labrador</div>
-
         <div id="Northwest Territories" class="inv">Northwest Territories</div>
-
         <div id="Yukon" class="inv">Yukon</div>
-
         <div id="Nunavut" class="inv">Nunavut</div>
 
       </div>
+
+      <div class="sidebar-pane" id="basemaps">
+          <h1 class="sidebar-header">Basemaps<span class="sidebar-close"><i class="fa fa-close"></i></span></h1>
+
+          <div class="side-element">
+            <div id="Carto" class="link" onclick="changeOverlay('Carto')">
+              <div class="link-hover">
+                <div class="link-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <div class="link-on">
+                <span>Current</span>
+              </div>
+              <img src="/img/Suomi_true.jpg"></img>
+            </div>
+            <span>Carto</span>
+          </div>
+
+            <div class="side-element">
+              <div id="OpenStreetMap" class="link" onclick="changeOverlay('OpenStreetMap')">
+                <div class="link-hover">
+                  <div class="link-hover-content">
+                    <i class="fa fa-plus fa-3x"></i>
+                  </div>
+                </div>
+                <div class="link-on on">
+                  <span>Current</span>
+                </div>
+                <img src="/img/mapboxmap.jpg"></img>
+              </div>
+              <span>OpenStreetMap</span>
+            </div>
+
+          <div class="side-element">
+            <div id="EsriWorldImagery" class="link" onclick="changeOverlay('Esri_WorldImagery')">
+              <div class="link-hover">
+                <div class="link-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <div class="link-on">
+                <span>Current</span>
+              </div>
+              <img src="/img/Terra_true.jpg"></img>
+            </div>
+            <span>Esri World Imagery</span>
+          </div>
+
+      </div>
+
+      <div class="sidebar-pane" id="sliders">
+          <h1 class="sidebar-header">Sliders<span class="sidebar-close"><i class="fa fa-close"></i></span></h1>
+          <p class="sidebar-lede">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no</p>
+      </div>
+
     </div>
   </div>
 

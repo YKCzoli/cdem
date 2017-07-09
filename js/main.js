@@ -104,7 +104,7 @@ L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 var sidebar = L.control.sidebar('sidebar').addTo(map);
 
-sidebar.open('home');
+sidebar.open('info');
 
 // some hack to avoid delay of bootstrap-select render
 // found at: https://stackoverflow.com/questions/23251488/bootstrap-select-plugin-how-to-avoid-flickering
