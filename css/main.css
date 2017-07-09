@@ -8,16 +8,13 @@ html, body, #map {
   height: 100%;
 }
 
-.leaflet-container {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
 .leaflet-touch .leaflet-control-layers-toggle {
   display: none;
 }
 
 .sidebar-content, .sidebar-tabs, .sidebar-header, .sidebar-tabs>ul>li>a {
   background-color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 
 .fa {
