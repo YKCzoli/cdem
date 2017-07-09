@@ -1,7 +1,6 @@
 body {
   padding: 0;
   margin: 0;
-  color: white;
 }
 
 html, body, #map {
@@ -10,6 +9,10 @@ html, body, #map {
 
 .leaflet-touch .leaflet-control-layers-toggle {
   display: none;
+}
+
+.sidebar-tabs>li.active, .sidebar-tabs>ul>li.active {
+    background-color: white;
 }
 
 .sidebar-content, .sidebar-tabs, .sidebar-header, .sidebar-tabs>ul>li>a {
