@@ -1,5 +1,3 @@
-'use strict';
-
 var flyToZoom = {
   "Northwest Territories": 4,
   "Nunavut": 4,
@@ -7,6 +5,14 @@ var flyToZoom = {
   "Nova Scotia": 6,
   "Prince Edward Island": 8
 };
+
+function flyToAdmin(admin_name) {
+  for (i = 0; i < Object.keys(topo_provterr._layers).length; i++) {
+    if (topo_provterr._layers[Object.keys(topo_provterr._layers)[i]].feature.geometry.properties.name == admin_name) {
+      map.flyTo(topo_provterr._layers[Object.keys(topo_provterr._layers)[i]].getBounds().getCenter(), (flyToZoom[admin_name] || 5));
+    }
+  }
+}
 
 // OGLC = open-government-licence-canada
 var attribution_OGLC = '<a href="http://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>';
@@ -39,7 +45,7 @@ function onEachFeature(feature, layer) {
 
 function onEachProvTerr(feature, layer) {
   layer.on('click', function() {
-    map.flyTo(layer.getBounds().getCenter(), (flyToZoom[feature.properties.name] || 5));
+    console.log('clicked polygon');
   });
 }
 

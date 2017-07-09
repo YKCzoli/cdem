@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  color: white;
 }
 
 html, body, #map {
@@ -17,4 +18,8 @@ html, body, #map {
 
 .elevation-info {
   color: white;
+}
+
+.fa {
+    font-size: 15px;
 }
