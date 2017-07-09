@@ -87,8 +87,9 @@
       <div class="sidebar-pane" id="basemaps">
           <h1 class="sidebar-header">Basemaps<span class="sidebar-close"><i class="fa fa-close"></i></span></h1>
 
+          <div class="row side-view-content">
           <div class="side-element">
-            <div id="Carto" class="link" onclick="changeOverlay('Carto')">
+            <div id="Carto" class="link">
               <div class="link-hover">
                 <div class="link-hover-content">
                   <i class="fa fa-plus fa-3x"></i>
@@ -97,25 +98,25 @@
               <div class="link-on">
                 <span>Current</span>
               </div>
-              <img src="/img/Suomi_true.jpg"></img>
+              <img src="img/cartoDarkMatter.jpg" width="40%"></img>
             </div>
             <span>Carto</span>
           </div>
 
-            <div class="side-element">
-              <div id="OpenStreetMap" class="link" onclick="changeOverlay('OpenStreetMap')">
-                <div class="link-hover">
-                  <div class="link-hover-content">
-                    <i class="fa fa-plus fa-3x"></i>
-                  </div>
+          <div class="side-element">
+            <div id="OpenStreetMap" class="link" onclick="changeOverlay('OpenStreetMap')">
+              <div class="link-hover">
+                <div class="link-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
                 </div>
-                <div class="link-on on">
-                  <span>Current</span>
-                </div>
-                <img src="/img/mapboxmap.jpg"></img>
               </div>
-              <span>OpenStreetMap</span>
+              <div class="link-on on">
+                <span>Current</span>
+              </div>
+              <img src="img/OpenStreetMap.jpg" width="40%"></img>
             </div>
+            <span>OpenStreetMap</span>
+          </div>
 
           <div class="side-element">
             <div id="EsriWorldImagery" class="link" onclick="changeOverlay('Esri_WorldImagery')">
@@ -127,10 +128,11 @@
               <div class="link-on">
                 <span>Current</span>
               </div>
-              <img src="/img/Terra_true.jpg"></img>
+              <img src="img/EsriWorldImagery.jpg" width="40%"></img>
             </div>
             <span>Esri World Imagery</span>
           </div>
+        </div>
 
       </div>
 

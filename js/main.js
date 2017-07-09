@@ -127,3 +127,20 @@ document
             target.className = 'vis';
         }
 });
+
+
+function changeOverlay(overlay) {
+
+    $('#basemaps .side-view-content .side-element .link-on').each(function () {
+      console.log('hi');
+        $(this).removeClass('on');
+    });
+
+    $('#' + overlay + ' .link-on').addClass('on');
+    setStyle(overlay);
+}
+
+function update_basemaps() {
+    overlay = document.getElementsByClassName('link-on on')[0].parentElement.getAttribute('id');
+    setStyle(overlay);
+}
