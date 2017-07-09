@@ -163,3 +163,18 @@ L.control.layers(baseMaps, overlayMaps).addTo(map);
 var sidebar = L.control.sidebar('sidebar').addTo(map);
 
 sidebar.open('home');
+
+// Dynamic sidebar with selection
+// document
+//     .getElementById('target')
+//     .addEventListener('change', function () {
+//         'use strict';
+//         var vis = document.querySelector('.vis'),
+//             target = document.getElementById(this.value);
+//         if (vis !== null) {
+//             vis.className = 'inv';
+//         }
+//         if (target !== null ) {
+//             target.className = 'vis';
+//         }
+// });
