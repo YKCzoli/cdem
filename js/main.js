@@ -92,7 +92,7 @@ function addToMap(error, provterr) {
 var baseMaps = {
   "Carto": CartoDB_DarkMatterNoLabels,
   "OpenStreetMap": OpenStreetMap,
-  "Esri World Imagery": Esri_WorldImagery
+  "Esri_WorldImagery": Esri_WorldImagery
 };
 
 var overlayMaps = {
@@ -109,7 +109,6 @@ sidebar.open('info');
 // some hack to avoid delay of bootstrap-select render
 // found at: https://stackoverflow.com/questions/23251488/bootstrap-select-plugin-how-to-avoid-flickering
 $('.selectpicker').selectpicker({
-  width: "65%"
 });
 
 // Dynamic sidebar  and map zoom with selection
@@ -128,16 +127,17 @@ document
         }
 });
 
-
 function changeOverlay(overlay) {
 
     $('#basemaps .side-view-content .side-element .link-on').each(function () {
-      console.log('hi');
         $(this).removeClass('on');
     });
+    console.log(overlay)
+    console.log(baseMaps);
+    baseMaps[overlay].addTo(map);
 
-    $('#' + overlay + ' .link-on').addClass('on');
-    setStyle(overlay);
+    // $('#' + overlay + ' .link-on').addClass('on');
+    // setStyle(overlay);
 }
 
 function update_basemaps() {
