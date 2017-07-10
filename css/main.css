@@ -11,12 +11,16 @@ html, body, #map {
   display: none;
 }
 
-.sidebar-tabs>li.active, .sidebar-tabs>ul>li.active {
-    background-color: white;
+.sidebar-tabs>ul>li>a {
+    color: white;
 }
 
-.sidebar-content, .sidebar-tabs, .sidebar-header, .sidebar-tabs>ul>li>a {
-  background-color: rgba(0, 0, 0, 0.8);
+.sidebar-tabs>li.active, .sidebar-tabs>ul>li.active {
+  background-color: rgba(220, 220, 220, 0.2);
+}
+
+.sidebar-content, .sidebar-tabs, .sidebar-header {
+  background-color: rgba(0, 0, 0, 1.0);
   color: white;
 }
 
