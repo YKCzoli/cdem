@@ -15,7 +15,7 @@ html, body, #map {
     color: white;
 }
 
-.sidebar-tabs>li.active, .sidebar-tabs>ul>li.active {
+.sidebar-tabs>ul>li.active, .sidebar-tabs>ul>li:hover  {
   background-color: rgba(220, 220, 220, 0.2);
 }
 
@@ -25,7 +25,7 @@ html, body, #map {
 }
 
 .fa {
-  font-size: 15px;
+  font-size: 28px;
 }
 
 .inv {

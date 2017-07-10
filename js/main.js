@@ -99,7 +99,7 @@ var baseMaps = {
 
 var overlayMaps = {
   "Provinces and Territories": topo_provterr,
-  "Canadian Digital Elevation Relief": cdem,
+  "Canadian Digital Elevation Model": cdem,
 };
 
 L.control.layers(baseMaps, overlayMaps).addTo(map);
@@ -144,5 +144,8 @@ function changeBasemap(overlay) {
         map.removeLayer(baseMaps[Object.keys(baseMaps)[i]]);
       }
     }
+}
 
+function addSlider() {
+  L.control.sideBySide(overlayMaps['Canadian Digital Elevation Model']).addTo(map);
 }
