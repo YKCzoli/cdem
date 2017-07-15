@@ -18,11 +18,11 @@ function flyToAdmin(admin_name) {
 var attribution_OGLC = '<a href="http://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>';
 var attribution_NE = '<a href="http://www.naturalearthdata.com/">Made with Natural Earth</a>';
 
-function onEachProvTerr(feature, layer) {
-  layer.on('click', function() {
-    console.log('clicked polygon');
-  });
-}
+// function onEachProvTerr(feature, layer) {
+//   layer.on('click', function() {
+//     console.log('clicked polygon');
+//   });
+// }
 
 var bounds = L.latLngBounds([39, -142], [84, -52]);
 
@@ -72,7 +72,7 @@ var provterrPolyOptions = {
 
 var topo_provterr = L.geoJson(null, {
   style: provterrPolyOptions,
-  onEachFeature: onEachProvTerr
+  // onEachFeature: onEachProvTerr
 });
 
 topo_provterr.getAttribution = function() {
