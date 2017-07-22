@@ -2,7 +2,7 @@
 if (!('remove' in Element.prototype)) {
   Element.prototype.remove = function() {
     if (this.parentNode) {
-        this.parentNode.removeChild(this);
+      this.parentNode.removeChild(this);
     }
   };
 }
@@ -24,13 +24,11 @@ var map = new mapboxgl.Map({
 
 var stores = {
   "type": "FeatureCollection",
-  "features": [
-    {
+  "features": [{
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -77.034084142948,
+        "coordinates": [-77.034084142948,
           38.909671288923
         ]
       },
@@ -49,8 +47,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -77.049766,
+        "coordinates": [-77.049766,
           38.900772
         ]
       },
@@ -69,8 +66,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -77.043929,
+        "coordinates": [-77.043929,
           38.910525
         ]
       },
@@ -89,8 +85,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -77.0672,
+        "coordinates": [-77.0672,
           38.90516896
         ]
       },
@@ -109,8 +104,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -77.002583742142,
+        "coordinates": [-77.002583742142,
           38.887041080933
         ]
       },
@@ -129,8 +123,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.933492720127,
+        "coordinates": [-76.933492720127,
           38.99225245786
         ]
       },
@@ -146,8 +139,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -77.097083330154,
+        "coordinates": [-77.097083330154,
           38.980979
         ]
       },
@@ -166,8 +158,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -77.359425054188,
+        "coordinates": [-77.359425054188,
           38.958058116661
         ]
       },
@@ -186,8 +177,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -77.10853099823,
+        "coordinates": [-77.10853099823,
           38.880100922392
         ]
       },
@@ -206,8 +196,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -75.28784,
+        "coordinates": [-75.28784,
           40.008008
         ]
       },
@@ -225,8 +214,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -75.20121216774,
+        "coordinates": [-75.20121216774,
           39.954030175164
         ]
       },
@@ -244,8 +232,7 @@ var stores = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -77.043959498405,
+        "coordinates": [-77.043959498405,
           38.903883387232
         ]
       },
@@ -259,10 +246,11 @@ var stores = {
         "postalCode": "20036",
         "state": "D.C."
       }
-    }]
-  };
+    }
+  ]
+};
 // This adds the data to the map
-map.on('load', function (e) {
+map.on('load', function(e) {
   // This is where your '.addLayer()' used to be, instead add only the source without styling a layer
   map.addSource("places", {
     "type": "geojson",
@@ -281,27 +269,29 @@ stores.features.forEach(function(marker, i) {
   el.id = "marker-" + i;
   el.className = 'marker';
   // Add markers to the map at all points
-  new mapboxgl.Marker(el, {offset: [-28, -46]})
-      .setLngLat(marker.geometry.coordinates)
-      .addTo(map);
+  new mapboxgl.Marker(el, {
+      offset: [-28, -46]
+    })
+    .setLngLat(marker.geometry.coordinates)
+    .addTo(map);
 
-  el.addEventListener('click', function(e){
-      // 1. Fly to the point
-      flyToStore(marker);
+  el.addEventListener('click', function(e) {
+    // 1. Fly to the point
+    flyToStore(marker);
 
-      // 2. Close all other popups and display popup for clicked store
-      createPopUp(marker);
+    // 2. Close all other popups and display popup for clicked store
+    createPopUp(marker);
 
-      // 3. Highlight listing in sidebar (and remove highlight for all other listings)
-      var activeItem = document.getElementsByClassName('active');
+    // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+    var activeItem = document.getElementsByClassName('active');
 
-      e.stopPropagation();
-      if (activeItem[0]) {
-         activeItem[0].classList.remove('active');
-      }
+    e.stopPropagation();
+    if (activeItem[0]) {
+      activeItem[0].classList.remove('active');
+    }
 
-      var listing = document.getElementById('listing-' + i);
-      listing.classList.add('active');
+    var listing = document.getElementById('listing-' + i);
+    listing.classList.add('active');
 
   });
 });
@@ -309,9 +299,9 @@ stores.features.forEach(function(marker, i) {
 
 function flyToStore(currentFeature) {
   map.flyTo({
-      center: currentFeature.geometry.coordinates,
-      zoom: 15
-    });
+    center: currentFeature.geometry.coordinates,
+    zoom: 15
+  });
 }
 
 function createPopUp(currentFeature) {
@@ -319,11 +309,13 @@ function createPopUp(currentFeature) {
   if (popUps[0]) popUps[0].remove();
 
 
-  var popup = new mapboxgl.Popup({closeOnClick: false})
-        .setLngLat(currentFeature.geometry.coordinates)
-        .setHTML('<h3>Sweetgreen</h3>' +
-          '<h4>' + currentFeature.properties.address + '</h4>')
-        .addTo(map);
+  var popup = new mapboxgl.Popup({
+      closeOnClick: false
+    })
+    .setLngLat(currentFeature.geometry.coordinates)
+    .setHTML('<h3>Sweetgreen</h3>' +
+      '<h4>' + currentFeature.properties.address + '</h4>')
+    .addTo(map);
 }
 
 
@@ -351,7 +343,7 @@ function buildLocationList(data) {
 
 
 
-    link.addEventListener('click', function(e){
+    link.addEventListener('click', function(e) {
       // Update the currentFeature to the store associated with the clicked link
       var clickedListing = data.features[this.dataPosition];
 
@@ -365,7 +357,7 @@ function buildLocationList(data) {
       var activeItem = document.getElementsByClassName('active');
 
       if (activeItem[0]) {
-         activeItem[0].classList.remove('active');
+        activeItem[0].classList.remove('active');
       }
       this.parentNode.classList.add('active');
 
