@@ -9,20 +9,32 @@ if (!('remove' in Element.prototype)) {
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284cWd3bm11byJ9.V6Hg2oYJwMAxeoR9GEzkAA';
 
-// This adds the map
 var map = new mapboxgl.Map({
-  // container id specified in the HTML
   container: 'map',
-  // style URL
   style: 'mapbox://styles/mapbox/light-v9',
-  // initial position in [long, lat] format
-  center: [-77.034084142948, 38.909671288923],
-  // initial zoom
-  zoom: 13,
-  scrollZoom: false
+  center: [-97.451180, 59],
+  zoom: 1,
+  minZoom: 3,
+  maxZoom: 12
 });
 
-var stores = {
+map.on('load', function() {
+    map.addLayer({
+        'id': 'cdem',
+        'type': 'raster',
+        'source': {
+            'type': 'raster',
+            'tiles': [
+              'http://maps.geogratis.gc.ca/wms/elevation_en?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.3.0&request=GetMap&srs=EPSG:3857&width=256&height=256'
+              //'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
+            ],
+            'tileSize': 256
+        },
+        'paint': {}
+    }, 'aeroway-taxiway');
+});
+
+var elevation_places = {
   "type": "FeatureCollection",
   "features": [{
       "type": "Feature",
@@ -249,21 +261,20 @@ var stores = {
     }
   ]
 };
-// This adds the data to the map
 map.on('load', function(e) {
   // This is where your '.addLayer()' used to be, instead add only the source without styling a layer
   map.addSource("places", {
     "type": "geojson",
-    "data": stores
+    "data": elevation_places
   });
   // Initialize the list
-  buildLocationList(stores);
+  buildLocationList(elevation_places);
 
 });
 
 // This is where your interactions with the symbol layer used to be
 // Now you have interactions with DOM markers instead
-stores.features.forEach(function(marker, i) {
+elevation_places.features.forEach(function(marker, i) {
   // Create an img element for the marker
   var el = document.createElement('div');
   el.id = "marker-" + i;
@@ -313,7 +324,7 @@ function createPopUp(currentFeature) {
       closeOnClick: false
     })
     .setLngLat(currentFeature.geometry.coordinates)
-    .setHTML('<h3>Sweetgreen</h3>' +
+    .setHTML('<h3>Elevation Name</h3>' +
       '<h4>' + currentFeature.properties.address + '</h4>')
     .addTo(map);
 }
