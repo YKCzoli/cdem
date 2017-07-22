@@ -38,38 +38,26 @@ var elevation_places = {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-77.049766,
-          38.900772
+        "coordinates": [-115.587158203125,
+          51.18967256411778
         ]
       },
       "properties": {
-        "phoneFormatted": "(202) 507-8357",
-        "phone": "2025078357",
-        "address": "2221 I St NW",
-        "city": "Washington DC",
-        "country": "United States",
-        "crossStreet": "at 22nd St NW",
-        "postalCode": "20037",
-        "state": "D.C."
+        "city": "Banff",
+        "prov-terr": "B.C."
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-77.043929,
-          38.910525
+        "coordinates": [-73.59123229980469,
+          45.50538444896976
         ]
       },
       "properties": {
-        "phoneFormatted": "(202) 387-9338",
-        "phone": "2023879338",
-        "address": "1512 Connecticut Ave NW",
-        "city": "Washington DC",
-        "country": "United States",
-        "crossStreet": "at Dupont Circle",
-        "postalCode": "20036",
-        "state": "D.C."
+        "city": "Montreal",
+        "prov/terr": "Quebec"
       }
     }
   ]
@@ -84,28 +72,20 @@ map.on('load', function(e) {
 
 });
 
-// This is where your interactions with the symbol layer used to be
-// Now you have interactions with DOM markers instead
 elevation_places.features.forEach(function(marker, i) {
-  // Create an img element for the marker
   var el = document.createElement('div');
   el.id = "marker-" + i;
   el.className = 'marker';
-  // Add markers to the map at all points
   new mapboxgl.Marker(el, {
-      offset: [-28, -46]
     })
     .setLngLat(marker.geometry.coordinates)
     .addTo(map);
 
   el.addEventListener('click', function(e) {
-    // 1. Fly to the point
     flyToStore(marker);
 
-    // 2. Close all other popups and display popup for clicked store
     createPopUp(marker);
 
-    // 3. Highlight listing in sidebar (and remove highlight for all other listings)
     var activeItem = document.getElementsByClassName('active');
 
     e.stopPropagation();
@@ -137,7 +117,7 @@ function createPopUp(currentFeature) {
     })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML('<h3>Elevation Name</h3>' +
-      '<h4>' + currentFeature.properties.address + '</h4>')
+      '<h4>' + currentFeature.properties.city + '</h4>')
     .addTo(map);
 }
 
@@ -156,7 +136,7 @@ function buildLocationList(data) {
     link.href = '#';
     link.className = 'title';
     link.dataPosition = i;
-    link.innerHTML = prop.address;
+    link.innerHTML = prop.city;
 
     var details = listing.appendChild(document.createElement('div'));
     details.innerHTML = prop.city;
@@ -167,16 +147,12 @@ function buildLocationList(data) {
 
 
     link.addEventListener('click', function(e) {
-      // Update the currentFeature to the store associated with the clicked link
       var clickedListing = data.features[this.dataPosition];
 
-      // 1. Fly to the point
       flyToStore(clickedListing);
 
-      // 2. Close all other popups and display popup for clicked store
       createPopUp(clickedListing);
 
-      // 3. Highlight listing in sidebar (and remove highlight for all other listings)
       var activeItem = document.getElementsByClassName('active');
 
       if (activeItem[0]) {
