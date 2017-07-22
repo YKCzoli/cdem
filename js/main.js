@@ -11,7 +11,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284c
 
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/light-v9',
+  style: 'mapbox://styles/mapbox/streets-v9',
   center: [-97.451180, 59],
   zoom: 1,
   minZoom: 3,
@@ -25,37 +25,17 @@ map.on('load', function() {
         'source': {
             'type': 'raster',
             'tiles': [
-              'http://maps.geogratis.gc.ca/wms/elevation_en?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.3.0&request=GetMap&srs=EPSG:3857&width=256&height=256'
-              //'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
+              'http://maps.geogratis.gc.ca/wms/elevation_en?&service=WMS&request=GetMap&layers=cdem.color-shaded-relief&styles=&format=image%2Fpng&transparent=true&version=1.1.1&height=256&width=256&srs=EPSG%3A3857&bbox={bbox-epsg-3857}'
             ],
             'tileSize': 256
         },
         'paint': {}
-    }, 'aeroway-taxiway');
+    }, 'water');
 });
 
 var elevation_places = {
   "type": "FeatureCollection",
   "features": [{
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-77.034084142948,
-          38.909671288923
-        ]
-      },
-      "properties": {
-        "phoneFormatted": "(202) 234-7336",
-        "phone": "2022347336",
-        "address": "1471 P St NW",
-        "city": "Washington DC",
-        "country": "United States",
-        "crossStreet": "at 15th St NW",
-        "postalCode": "20005",
-        "state": "D.C."
-      }
-    },
-    {
       "type": "Feature",
       "geometry": {
         "type": "Point",
