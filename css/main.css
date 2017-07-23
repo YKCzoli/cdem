@@ -1,5 +1,5 @@
 body {
-  color: #fff;
+  color: #F0FFF0;
   font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
   margin: 0;
   padding: 0;
@@ -52,13 +52,13 @@ a:hover {
 }
 
 .heading {
-  background: #fff;
+  background: #F0FFF0;
   border-bottom: 1px solid #eee;
   min-height: 60px;
   line-height: 60px;
   padding: 0 10px;
   background-color: #27332F;
-  color: #fff;
+  color: #F0FFF0;
 }
 
 .listings {
@@ -81,7 +81,7 @@ a:hover {
 
 .listings .item .title {
   display: block;
-  color: #fff;
+  color: #F0FFF0;
   font-weight: 700;
 }
 
@@ -109,7 +109,7 @@ a:hover {
 }
 
  ::-webkit-scrollbar-thumb {
-  background: #00853e;
+  background: #F0FFF0;
   border-radius: 0;
 }
 
@@ -156,7 +156,7 @@ a:hover {
 
 .mapboxgl-popup-content h3 {
   background: #3F4B47;
-  color: #fff;
+  color: #F0FFF0;
   margin: 0;
   display: block;
   padding: 10px;

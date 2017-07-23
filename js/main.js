@@ -262,12 +262,19 @@ elevation_places.features.forEach(function(marker, i) {
     var activeItem = document.getElementsByClassName('active');
 
     e.stopPropagation();
+    var activeDetails = document.getElementById('active_details');
+    if (activeDetails) {
+      activeDetails.outerHTML= '';
+    }
     if (activeItem[0]) {
       activeItem[0].classList.remove('active');
     }
 
     var listing = document.getElementById('listing-' + i);
     listing.classList.add('active');
+    var details = listing.appendChild(document.createElement('div'));
+    details.setAttribute('id', 'active_details');
+    details.innerHTML = marker.properties.description;
 
   });
 });
