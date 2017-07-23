@@ -1,5 +1,5 @@
 body {
-  color: #404040;
+  color: #fff;
   font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ body {
 
 .sidebar {
   position: absolute;
-  width: 33.3333%;
+  width: 25%;
   height: 100%;
   top: 0;
   left: 0;
@@ -28,8 +28,8 @@ body {
 
 .map {
   position: absolute;
-  left: 33.3333%;
-  width: 66.6666%;
+  left: 25%;
+  width: 75%;
   top: 0;
   bottom: 0;
 }
@@ -57,7 +57,7 @@ a:hover {
   min-height: 60px;
   line-height: 60px;
   padding: 0 10px;
-  background-color: #00853e;
+  background-color: #27332F;
   color: #fff;
 }
 
@@ -65,6 +65,7 @@ a:hover {
   height: 100%;
   overflow: auto;
   padding-bottom: 60px;
+  background-color: #27332F;
 }
 
 .listings .item {
@@ -80,7 +81,7 @@ a:hover {
 
 .listings .item .title {
   display: block;
-  color: #00853e;
+  color: #fff;
   font-weight: 700;
 }
 
@@ -89,11 +90,11 @@ a:hover {
 }
 
 .listings .item.active .title, .listings .item .title:hover {
-  color: #8cc63f;
+  color: #98A09D;
 }
 
 .listings .item.active {
-  background-color: #f8f8f8;
+  background-color: #3F4B47;
 }
 
  ::-webkit-scrollbar {
@@ -154,7 +155,7 @@ a:hover {
 }
 
 .mapboxgl-popup-content h3 {
-  background: #91c949;
+  background: #3F4B47;
   color: #fff;
   margin: 0;
   display: block;
@@ -167,12 +168,14 @@ a:hover {
 .mapboxgl-popup-content h4 {
   margin: 0;
   display: block;
+  background-color: #75807C;
   padding: 10px 10px 10px 10px;
   font-weight: 400;
 }
 
 .mapboxgl-popup-content div {
   padding: 10px;
+  background-color: #75807C;
 }
 
 .mapboxgl-container .leaflet-marker-icon {
@@ -184,5 +187,5 @@ a:hover {
 }
 
 .mapboxgl-popup-anchor-top>.mapboxgl-popup-tip {
-  border-bottom-color: #91c949;
+  border-bottom-color: #75807C;
 }

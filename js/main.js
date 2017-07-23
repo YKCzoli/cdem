@@ -11,9 +11,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284c
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v9',
-  center: [-97.451180, 59],
-  zoom: 1,
-  minZoom: 3,
+  center: [-97.451180, 60],
+  zoom: 3,
   maxZoom: 12
 });
 
@@ -43,21 +42,25 @@ var elevation_places = {
         ]
       },
       "properties": {
-        "city": "Banff",
-        "prov-terr": "B.C."
+        "name": "Banff",
+        "provterr": "Alberta",
+        "elevation": 344,
+        "description": "Banff is a city in Alberta"
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [-73.59123229980469,
-          45.50538444896976
+        "coordinates": [-73.588889,
+          45.506389
         ]
       },
       "properties": {
-        "city": "Montreal",
-        "prov/terr": "Quebec"
+        "name": "Mount Royal",
+        "provterr": "Quebec",
+        "elevation": 233,
+        "description": "Mount Royal is a large volcanic-related hill or small mountain in the city of Montreal, immediately west of downtown Montreal, the city to which it gave its name."
       }
     }
   ]
@@ -67,7 +70,6 @@ map.on('load', function(e) {
     "type": "geojson",
     "data": elevation_places
   });
-  // Initialize the list
   buildLocationList(elevation_places);
 
 });
@@ -103,7 +105,7 @@ elevation_places.features.forEach(function(marker, i) {
 function flyToStore(currentFeature) {
   map.flyTo({
     center: currentFeature.geometry.coordinates,
-    zoom: 15
+    zoom: 11
   });
 }
 
@@ -116,8 +118,10 @@ function createPopUp(currentFeature) {
       closeOnClick: false
     })
     .setLngLat(currentFeature.geometry.coordinates)
-    .setHTML('<h3>Elevation Name</h3>' +
-      '<h4>' + currentFeature.properties.city + '</h4>')
+    .setHTML('<h3>' + currentFeature.properties.name + '</h3>' +
+    '<div>Latitude: ' + currentFeature.geometry.coordinates[0] + '</div>' +
+    '<div>Longitude: ' + currentFeature.geometry.coordinates[1] + '</div>' +
+    '<div>Elevation: ' + currentFeature.properties.elevation + 'm</div>')
     .addTo(map);
 }
 
@@ -136,15 +140,10 @@ function buildLocationList(data) {
     link.href = '#';
     link.className = 'title';
     link.dataPosition = i;
-    link.innerHTML = prop.city;
+    link.innerHTML = prop.name + ', ' + prop.provterr;
 
     var details = listing.appendChild(document.createElement('div'));
-    details.innerHTML = prop.city;
-    if (prop.phone) {
-      details.innerHTML += ' &middot; ' + prop.phoneFormatted;
-    }
-
-
+    details.innerHTML = 'location_details';
 
     link.addEventListener('click', function(e) {
       var clickedListing = data.features[this.dataPosition];
