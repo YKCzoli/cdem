@@ -16,6 +16,9 @@ var map = new mapboxgl.Map({
   maxZoom: 12
 });
 
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'bottom-right');
+
 map.on('load', function() {
     map.addLayer({
         'id': 'cdem',
