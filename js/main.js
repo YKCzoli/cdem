@@ -232,6 +232,7 @@ var elevation_places = {
         "name": "Mount Royal",
         "provterr": "Quebec",
         "elevation": 233,
+        "zoom": 11,
         "description": "Mount Royal is a large volcanic-related hill or small mountain in the city of Montreal, immediately west of downtown Montreal, the city to which it gave its name."
       }
     },
@@ -284,7 +285,9 @@ elevation_places.features.forEach(function(marker, i) {
 function flyToStore(currentFeature) {
   map.flyTo({
     center: currentFeature.geometry.coordinates,
-    zoom: 11
+    zoom: currentFeature. properties.zoom || 9,
+    pitch: 60, // pitch in degrees
+    // bearing: -60, // bearing in degrees
   });
 }
 
