@@ -142,9 +142,6 @@ function buildLocationList(data) {
     link.dataPosition = i;
     link.innerHTML = prop.name + ', ' + prop.provterr;
 
-    var details = listing.appendChild(document.createElement('div'));
-    details.innerHTML = 'location_details';
-
     link.addEventListener('click', function(e) {
       var clickedListing = data.features[this.dataPosition];
 
@@ -153,11 +150,19 @@ function buildLocationList(data) {
       createPopUp(clickedListing);
 
       var activeItem = document.getElementsByClassName('active');
-
       if (activeItem[0]) {
         activeItem[0].classList.remove('active');
       }
-      this.parentNode.classList.add('active');
+
+      var activeDetails = document.getElementById('active_details');
+      if (activeDetails) {
+        activeDetails.outerHTML= '';
+        this.parentNode.classList.add('active');
+      }
+
+      var details = this.parentNode.insertBefore(document.createElement('div'), this.nextSibling);
+      details.setAttribute('id', 'active_details');
+      details.innerHTML = clickedListing.properties.description;
 
     });
   }
