@@ -141,7 +141,9 @@ a:hover {
 }
 
 .mapboxgl-popup-close-button {
-  display: none;
+  color: white;
+  font-size: 20px;
+  margin: -15px 0px;
 }
 
 .mapboxgl-popup-content {

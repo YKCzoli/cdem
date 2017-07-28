@@ -315,6 +315,16 @@ elevation_places.features.forEach(function(marker, i) {
     details.innerHTML = marker.properties.description;
 
   });
+
+  el.addEventListener('mouseenter', function(e) {
+    map.getCanvas().style.cursor = 'pointer';
+    createPopUp(marker);
+  });
+
+  el.addEventListener('mouseleave', function(e) {
+    map.getCanvas().style.cursor = '';
+  });
+
 });
 
 
@@ -331,9 +341,8 @@ function createPopUp(currentFeature) {
   var popUps = document.getElementsByClassName('mapboxgl-popup');
   if (popUps[0]) popUps[0].remove();
 
-
   var popup = new mapboxgl.Popup({
-      closeOnClick: false
+    closeOnClick: false
     })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML('<h3>' + currentFeature.properties.name + '</h3>' +
@@ -342,7 +351,6 @@ function createPopUp(currentFeature) {
     '<div>Elevation: ' + currentFeature.properties.elevation + 'm</div>')
     .addTo(map);
 }
-
 
 function buildLocationList(data) {
   for (i = 0; i < data.features.length; i++) {
