@@ -1,28 +1,3 @@
-var target = document.getElementById('map');
-var opts = {
-  lines: 9 // The number of lines to draw
-, length: 0 // The length of each line
-, width: 11 // The line thickness
-, radius: 18 // The radius of the inner circle
-, scale: 0.75 // Scales overall size of the spinner
-, corners: 1 // Corner roundness (0..1)
-, color: '#000' // #rgb or #rrggbb or array of colors
-, opacity: 0.15 // Opacity of the lines
-, rotate: 65 // The rotation offset
-, direction: 1 // 1: clockwise, -1: counterclockwise
-, speed: 1.2 // Rounds per second
-, trail: 44 // Afterglow percentage
-, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
-, zIndex: 2e9 // The z-index (defaults to 2000000000)
-, className: 'spinner' // The CSS class to assign to the spinner
-, top: '51%' // Top position relative to parent
-, left: '50%' // Left position relative to parent
-, shadow: false // Whether to render a shadow
-, hwaccel: false // Whether to use hardware acceleration
-, position: 'absolute' // Element positioning
-}
-var spinner = new Spinner(opts).spin(target);
-
 if (!('remove' in Element.prototype)) {
   Element.prototype.remove = function() {
     if (this.parentNode) {
@@ -58,16 +33,6 @@ map.on('load', function() {
         },
         'paint': {}
     }, 'water');
-});
-
-var counter = 0;
-map.on("render", function() {
-  if(map.loaded()) {
-    counter+=1;
-  }
-  if (counter == 20) {
-    spinner.stop();
-  }
 });
 
 var elevation_places = {
