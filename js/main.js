@@ -6,13 +6,13 @@ if (!('remove' in Element.prototype)) {
   };
 }
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284cWd3bm11byJ9.V6Hg2oYJwMAxeoR9GEzkAA';
+mapboxgl.accessToken = 'pk.eyJ1IjoieWN6b2xpIiwiYSI6IjJkRURjVW8ifQ.VGeQDfYcDPlFWrr_1vD3cg';
 
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/streets-v9',
-  center: [-97.451180, 60],
-  zoom: 3,
+  style: 'mapbox://styles/yczoli/cj8gk73m01arj2rplm6owne9p',
+  center: [-97.451180, 71],
+  zoom: 2,
   maxZoom: 12,
   minZoom: 2
 });
@@ -219,24 +219,6 @@ var elevation_places = {
         "description": "Glen Valley is the highest point in Prince Edward Island."
       }
     },
-
-    ///////////////
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-73.588889,
-          45.506389
-        ]
-      },
-      "properties": {
-        "name": "Mount Royal",
-        "provterr": "Quebec",
-        "elevation": 233,
-        "zoom": 11,
-        "description": "Mount Royal is a large volcanic-related hill or small mountain in the city of Montreal, immediately west of downtown Montreal, the city to which it gave its name."
-      }
-    },
   ]
 };
 map.on('load', function(e) {
@@ -258,7 +240,7 @@ elevation_places.features.forEach(function(marker, i) {
     .addTo(map);
 
   el.addEventListener('click', function(e) {
-    flyToStore(marker);
+    flyToPeak(marker);
 
     createPopUp(marker);
 
@@ -293,11 +275,11 @@ elevation_places.features.forEach(function(marker, i) {
 });
 
 
-function flyToStore(currentFeature) {
+function flyToPeak(currentFeature) {
   map.flyTo({
     center: currentFeature.geometry.coordinates,
     zoom: currentFeature. properties.zoom || 9,
-    pitch: 60, // pitch in degrees
+    // pitch: 60, // pitch in degrees
     // bearing: -60, // bearing in degrees
   });
 }
@@ -311,8 +293,6 @@ function createPopUp(currentFeature) {
     })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML('<h3>' + currentFeature.properties.name + '</h3>' +
-    '<div>Latitude: ' + currentFeature.geometry.coordinates[0] + '</div>' +
-    '<div>Longitude: ' + currentFeature.geometry.coordinates[1] + '</div>' +
     '<div>Elevation: ' + currentFeature.properties.elevation + 'm</div>')
     .addTo(map);
 }
@@ -336,7 +316,7 @@ function buildLocationList(data) {
     link.addEventListener('click', function(e) {
       var clickedListing = data.features[this.dataPosition];
 
-      flyToStore(clickedListing);
+      flyToPeak(clickedListing);
 
       createPopUp(clickedListing);
 

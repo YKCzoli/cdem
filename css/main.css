@@ -113,12 +113,16 @@ a:hover {
   border-radius: 0;
 }
 
+/*
+API call for marker:
+https://www.mapbox.com/api-documentation/#retrieve-tilejson-metadata
+*/
 .marker {
   border: none;
   cursor: pointer;
   height: 70px;
   width: 30px;
-  background-image: url(marker.png);
+  background-image: url(marker2.png);
 }
 
 .clearfix {
