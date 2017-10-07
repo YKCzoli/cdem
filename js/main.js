@@ -293,7 +293,7 @@ function createPopUp(currentFeature) {
     })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML('<h3>' + currentFeature.properties.name + '</h3>' +
-    '<div>Elevation: ' + currentFeature.properties.elevation + 'm</div>')
+    '<div>Elevation: ' + currentFeature.properties.elevation + ' m</div>')
     .addTo(map);
 }
 
