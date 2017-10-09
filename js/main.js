@@ -1,3 +1,7 @@
+$(window).on('load',function(){
+    $('#myModal').modal('show');
+});
+
 if (!('remove' in Element.prototype)) {
   Element.prototype.remove = function() {
     if (this.parentNode) {

@@ -8,14 +8,42 @@
   <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet'>
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.39.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.39.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='bower_components/jquery/dist/jquery.min.js'></script>
+  <script src='bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
+  <link href='bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet' />
   <link href='css/main.css' rel='stylesheet' />
 
 </head>
 
 <body>
+
+  <div class="container">
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Top Peaks Per Province and Territory</h4>
+          </div>
+          <div class="modal-body">
+            <p>Explore the top peak per province and territory in this interactive map. </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Explore</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
   <div class='sidebar'>
     <div class='heading'>
-      <h1>Elevation Features</h1>
+      <h1>Peaks</h1>
     </div>
     <div id='listings' class='listings'></div>
   </div>
