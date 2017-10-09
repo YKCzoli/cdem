@@ -315,7 +315,7 @@ function buildLocationList(data) {
     link.href = '#';
     link.className = 'title';
     link.dataPosition = i;
-    link.innerHTML = prop.name + ', ' + prop.provterr;
+    link.innerHTML = prop.provterr;
 
     link.addEventListener('click', function(e) {
       var clickedListing = data.features[this.dataPosition];
