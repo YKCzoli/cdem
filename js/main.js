@@ -1,5 +1,5 @@
-$(window).on('load',function(){
-    $('#myModal').modal('show');
+$(window).on('load', function() {
+  $('#myModal').modal('show');
 });
 
 if (!('remove' in Element.prototype)) {
@@ -12,12 +12,15 @@ if (!('remove' in Element.prototype)) {
 
 mapboxgl.accessToken = 'pk.eyJ1IjoieWN6b2xpIiwiYSI6IjJkRURjVW8ifQ.VGeQDfYcDPlFWrr_1vD3cg';
 
+// OGLC = open-government-licence-canada
+var attribution_OGLC = '<a href="http://open.canada.ca/en/open-government-licence-canada" target="_blank">Open Government Licence - Canada</a>';
+
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/yczoli/cj8gk73m01arj2rplm6owne9p',
   center: [-97.451180, 71],
   zoom: 2,
-  maxZoom: 12,
+  maxZoom: 11,
   minZoom: 2
 });
 
@@ -25,24 +28,24 @@ var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'bottom-right');
 
 map.on('load', function() {
-    map.addLayer({
-        'id': 'cdem',
-        'type': 'raster',
-        'source': {
-            'type': 'raster',
-            'tiles': [
-              'http://maps.geogratis.gc.ca/wms/elevation_en?&service=WMS&request=GetMap&layers=cdem.color-shaded-relief&styles=&format=image%2Fpng&transparent=true&version=1.1.1&height=256&width=256&srs=EPSG%3A3857&bbox={bbox-epsg-3857}'
-            ],
-            'tileSize': 256
-        },
-        'paint': {}
-    }, 'water');
+  map.addLayer({
+    'id': 'cdem',
+    'type': 'raster',
+    'source': {
+      'type': 'raster',
+      'attribution': attribution_OGLC,
+      'tiles': [
+        'http://maps.geogratis.gc.ca/wms/elevation_en?&service=WMS&request=GetMap&layers=cdem.color-shaded-relief&styles=&format=image%2Fpng&transparent=true&version=1.1.1&height=256&width=256&srs=EPSG%3A3857&bbox={bbox-epsg-3857}'
+      ],
+      'tileSize': 256
+    },
+    'paint': {}
+  }, 'water');
 });
 
 var elevation_places = {
   "type": "FeatureCollection",
-  "features": [
-    {
+  "features": [{
       "type": "Feature",
       "geometry": {
         "type": "Point",
@@ -84,7 +87,7 @@ var elevation_places = {
         "name": "Mount Columbia",
         "provterr": "Alberta",
         "elevation": 3747,
-        "description": "Mount Columbia is the highest point in Alberta, Canada. It is second only to Mount Robson for height and topographical prominence in the Canadian Rockies. It is located on the border between Alberta and British Columbia on the northern edge of the Columbia Icefield. Its highest point, however, lies within Jasper National Park in Alberta."
+        "description": "Mount Columbia is the highest point in Alberta, Canada. It is second only to Mount Robson for height and topographical prominence in the Canadian Rockies. It is located on the border between Alberta and British Columbia on the northern edge of the Columbia Icefield."
       }
     },
     {
@@ -231,15 +234,13 @@ map.on('load', function(e) {
     "data": elevation_places
   });
   buildLocationList(elevation_places);
-
 });
 
 elevation_places.features.forEach(function(marker, i) {
   var el = document.createElement('div');
   el.id = "marker-" + i;
   el.className = 'marker';
-  new mapboxgl.Marker(el, {
-    })
+  new mapboxgl.Marker(el, {})
     .setLngLat(marker.geometry.coordinates)
     .addTo(map);
 
@@ -253,7 +254,7 @@ elevation_places.features.forEach(function(marker, i) {
     e.stopPropagation();
     var activeDetails = document.getElementById('active_details');
     if (activeDetails) {
-      activeDetails.outerHTML= '';
+      activeDetails.outerHTML = '';
     }
     if (activeItem[0]) {
       activeItem[0].classList.remove('active');
@@ -278,11 +279,10 @@ elevation_places.features.forEach(function(marker, i) {
 
 });
 
-
 function flyToPeak(currentFeature) {
   map.flyTo({
     center: currentFeature.geometry.coordinates,
-    zoom: currentFeature. properties.zoom || 9,
+    zoom: currentFeature.properties.zoom || 9,
     // pitch: 60, // pitch in degrees
     // bearing: -60, // bearing in degrees
   });
@@ -293,11 +293,11 @@ function createPopUp(currentFeature) {
   if (popUps[0]) popUps[0].remove();
 
   var popup = new mapboxgl.Popup({
-    closeOnClick: false
+      closeOnClick: false
     })
     .setLngLat(currentFeature.geometry.coordinates)
     .setHTML('<h3>' + currentFeature.properties.name + '</h3>' +
-    '<div>Elevation: ' + currentFeature.properties.elevation + ' m</div>')
+      '<div>Elevation: ' + currentFeature.properties.elevation + ' m</div>')
     .addTo(map);
 }
 
@@ -331,7 +331,7 @@ function buildLocationList(data) {
 
       var activeDetails = document.getElementById('active_details');
       if (activeDetails) {
-        activeDetails.outerHTML= '';
+        activeDetails.outerHTML = '';
         this.parentNode.classList.add('active');
       }
 
