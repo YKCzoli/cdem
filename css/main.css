@@ -27,9 +27,10 @@ body {
         display: none;
     }
     .map {
-      position: absolute;
       left: 0% !important;
-      width: 100%;
+    }
+    .mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-top-right {
+      right: 0px !important;
     }
 }
 
@@ -43,6 +44,10 @@ body {
   width: 100%;
   top: 0;
   bottom: 0;
+}
+
+.mapboxgl-ctrl-bottom-right, .mapboxgl-ctrl-top-right {
+  right: 25%;
 }
 
 h1 {
