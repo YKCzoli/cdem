@@ -221,3 +221,11 @@ https://www.mapbox.com/api-documentation/#retrieve-tilejson-metadata
 .btn-default {
   background-color: #F5FFFA;
 }
+
+.info-link {
+  color: #F5FFFA;
+}
+
+.info-link:hover {
+  color: #75807C;
+}
