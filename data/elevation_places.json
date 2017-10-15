@@ -12,7 +12,7 @@ var elevation_places = {
         "name": "Mount Logan",
         "provterr": "Yukon",
         "elevation": 5956,
-        "description": "Mount Logan is the highest mountain in Canada and the second-highest peak in North America, after Denali. The mountain was named after Sir William Edmond Logan, a Canadian geologist and founder of the Geological Survey of Canada (GSC)."
+        "description": "Mount Logan is the highest mountain in Canada and the second-highest peak in North America, after <u><a class='info-link' href='https://en.wikipedia.org/wiki/Denali' target='_blank'>Denali</a></u>. The mountain was named after <u><a class='info-link' href='https://en.wikipedia.org/wiki/William_Edmond_Logan' target='_blank'>Sir William Edmond Logan</a></u>, a Canadian geologist and founder of the <u><a class='info-link' href='https://en.wikipedia.org/wiki/Geological_Survey_of_Canada' target='_blank'>Geological Survey of Canada (GSC)</a></u>."
       }
     },
     {
@@ -27,7 +27,7 @@ var elevation_places = {
         "name": "Mount Fairweather",
         "provterr": "British Columbia",
         "elevation": 4663,
-        "description": "Mount Fairweather (officially gazetted as Fairweather Mountain in Canada but referred to as Mount Fairweather), is one of the world's highest coastal mountains at 4,671 metres (15,325 feet.)"
+        "description": "Mount Fairweather (officially gazetted as Fairweather Mountain in Canada but referred to as Mount Fairweather), is one of the world's highest coastal mountains at 4,671 metres (15,325 feet.). The mountain was named on May 3, 1778 by <u><a class='info-link' href='https://en.wikipedia.org/wiki/James_Cook' target='_blank'>Captain James Cook</a></u>, apparently for the unusually good weather encountered at the time."
       }
     },
     {
@@ -42,7 +42,7 @@ var elevation_places = {
         "name": "Mount Columbia",
         "provterr": "Alberta",
         "elevation": 3747,
-        "description": "Mount Columbia is the highest point in Alberta, Canada. It is second only to Mount Robson for height and topographical prominence in the Canadian Rockies. It is located on the border between Alberta and British Columbia on the northern edge of the Columbia Icefield."
+        "description": "Mount Columbia is located on the border between Alberta and British Columbia on the northern edge of the <u><a class='info-link' href='https://en.wikipedia.org/wiki/Columbia_Icefield' target='_blank'>Columbia Icefield</a></u>. The mountain was named in 1898 by J. <u><a class='info-link' href='https://en.wikipedia.org/wiki/J._Norman_Collie' target='_blank'>Norman Collie</a></u> after the <u><a class='info-link'href='https://en.wikipedia.org/wiki/Columbia_River' target='_blank'>Columbia River</a></u>."
       }
     },
     {
@@ -57,7 +57,7 @@ var elevation_places = {
         "name": "Mount Nirvana",
         "provterr": "Northwest Territories",
         "elevation": 2773,
-        "description": "Mount Nirvana, at 2,773 m (9,098 ft) is the unofficial name of the highest mountain in the Northwest Territories, Canada."
+        "description": "Mount Nirvana, at 2,773 m (9,098 ft) is the unofficial name of the highest mountain in the Northwest Territories, Canada. As of 2008, the Canadian Government continues to refer to the mountain as 'unnamed peak', however, the name 'Mount Nirvana' is commonly depicted in alpine literature."
       }
     },
     {
@@ -72,8 +72,8 @@ var elevation_places = {
         "name": "Barbeau Peak",
         "provterr": "Nunavut",
         "elevation": 2616,
-        "zoom": 7,
-        "description": "Barbeau Peak is a mountain in Qikiqtaaluk, Nunavut, Canada. Located on Ellesmere Island within Quttinirpaaq National Park, it is the highest mountain in Nunavut and the Canadian Arctic. The mountain was named in 1969 for Dr. Marius Barbeau (1883-1969), a Canadian anthropologist whose research into First Nations and Inuit cultures gained him international acclaim."
+        "zoom": 4,
+        "description": "Barbeau Peak is a mountain in <u><a class='info-link' href='https://en.wikipedia.org/wiki/Qikiqtaaluk_Region' target='_blank'>Qikiqtaaluk, Nunavut</a></u>, Canada. Located on <u><a class='info-link' href='https://en.wikipedia.org/wiki/Ellesmere_Island' target='_blank'>Ellesmere Island</a></u> within <u><a class='info-link' href='https://en.wikipedia.org/wiki/Quttinirpaaq_National_Park' target='_blank'>Quttinirpaaq National Park</a></u>, it is the highest mountain in Nunavut and the Canadian Arctic. The mountain was named in 1969 for <u><a class='info-link' href='https://en.wikipedia.org/wiki/Marius_Barbeau' target='_blank'>Dr. Marius Barbeau</a></u>, a Canadian anthropologist whose research into First Nations and Inuit cultures gained him international acclaim."
       }
     },
     {
@@ -88,7 +88,22 @@ var elevation_places = {
         "name": "Mount Caubvick",
         "provterr": "Newfoundland and Labrador",
         "elevation": 1652,
-        "description": "Mount Caubvick (known as Mont D'Iberville in Quebec) is a mountain located on the border between Labrador and Quebec in the Selamiut Range of the Torngat Mountains. Mount Caubvick is the highest point in mainland Canada east of Alberta. The mountain contains a massive peak that rises sharply from nearby sea level. Craggy ridges, steep cirques and glaciers are prominent features of the peak."
+        "description": "Mount Caubvick (known as Mont D'Iberville in Quebec) is a mountain located on the border between Labrador and Quebec in the <u><a class='info-link' href='https://en.wikipedia.org/wiki/Selamiut_Range' target='_blank'>Selamiut Range</a></u> of the <u><a class='info-link' href='https://en.wikipedia.org/wiki/Torngat_Mountains' target='_blank'>Torngat Mountains</a></u>. Mount Caubvick is the highest point in mainland Canada east of Alberta. The mountain contains a massive peak that rises sharply from nearby sea level. Craggy ridges, steep cirques and glaciers are prominent features of the peak."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-63.716667,
+          58.883333
+        ]
+      },
+      "properties": {
+        "name": "Mount Caubvick",
+        "provterr": "Quebec",
+        "elevation": 1652,
+        "description": "Mount Caubvick (known as Mont D'Iberville in Quebec) is a mountain located on the border between Labrador and Quebec in the <u><a class='info-link' href='https://en.wikipedia.org/wiki/Selamiut_Range' target='_blank'>Selamiut Range</a></u> of the <u><a class='info-link' href='https://en.wikipedia.org/wiki/Torngat_Mountains' target='_blank'>Torngat Mountains</a></u>. Mount Caubvick is the highest point in mainland Canada east of Alberta. The mountain contains a massive peak that rises sharply from nearby sea level. Craggy ridges, steep cirques and glaciers are prominent features of the peak."
       }
     },
     {
@@ -103,7 +118,7 @@ var elevation_places = {
         "name": "Cypress Hills",
         "provterr": "Saskatchewan",
         "elevation": 1392,
-        "description": "The Cypress Hills are a geographical region of hills in southwestern Saskatchewan and southeastern Alberta, Canada."
+        "description": "The Cypress Hills are a geographical region of hills in southwestern Saskatchewan and southeastern Alberta, Canada. The hills are not true <u><a class='info-link' href='https://en.wikipedia.org/wiki/Mountain' target='_blank'>mountains</a></u> but are rather the remnants of erosion of a <u><a class='info-link' href='https://en.wikipedia.org/wiki/Tertiary' target='_blank'>Tertiary</a></u> <u><a class='info-link' href='https://en.wikipedia.org/wiki/Plateau' target='_blank'>plateau</a></u> of <u><a class='info-link' href='https://en.wikipedia.org/wiki/Sediment' target='_blank'>sediment</a></u> formed during the initial uplift of the <u><a class='info-link' href='https://en.wikipedia.org/wiki/Rocky_Mountains' target='_blank'>Rocky Mountains</a></u>."
       }
     },
     {
@@ -118,7 +133,7 @@ var elevation_places = {
         "name": "Baldy Mountain",
         "provterr": "Manitoba",
         "elevation": 832,
-        "description": "Baldy Mountain is the highest peak in Manitoba, Canada. It is located in the Duck Mountain Provincial Park, northwest of Dauphin. It is 832 m (2,730 ft) tall, making it the highest mountain in the 563 km (350 mi) long Manitoba Escarpment."
+        "description": "Baldy Mountain is located in the <u><a class='info-link' href='https://en.wikipedia.org/wiki/Duck_Mountain_Provincial_Park_(Manitoba)' target='_blank'>Duck Mountain Provincial Park</a></u>, northwest of <u><a class='info-link' href='https://en.wikipedia.org/wiki/Dauphin,_Manitoba' target='_blank'>Dauphin</a></u>. It is 832 m (2,730 ft) tall, making it the highest mountain in the 563 km (350 mi) long <u><a class='info-link' href='https://en.wikipedia.org/wiki/Pembina_Escarpment' target='_blank'>Manitoba Escarpment</a></u>."
       }
     },
     {
@@ -133,7 +148,7 @@ var elevation_places = {
         "name": "Mount Carleton",
         "provterr": "New Brunswick",
         "elevation": 817,
-        "description": "Mount Carleton, in Mount Carleton Provincial Park, is at 817m the highest elevation in the Canadian province of New Brunswick, and is also the highest peak in the Canadian Maritime Provinces. It is one of the highlights of the Canadian portion of the International Appalachian Trail."
+        "description": "Mount Carleton, in <u><a class='info-link' href='https://en.wikipedia.org/wiki/Mount_Carleton_Provincial_Park' target='_blank'>Mount Carleton Provincial Park</a></u>, is at 817m the highest elevation in the Canadian province of New Brunswick, and is also the highest peak in the Canadian Maritime Provinces. It is one of the highlights of the Canadian portion of the <u><a class='info-link' href='https://en.wikipedia.org/wiki/International_Appalachian_Trail' target='_blank'>International Appalachian Trail</a></u>."
       }
     },
     {
@@ -148,7 +163,7 @@ var elevation_places = {
         "name": "Ishpatina Ridge",
         "provterr": "Ontario",
         "elevation": 693,
-        "description": "Ishpatina Ridge is the highest point of land in the Canadian province of Ontario, at an estimated 693 m (2,274 ft) above sea level. Ishpatina Ridge rises approximately 300 m (984 ft) above the immediate area. It was only truly recognized as Ontario's highest point after federal government topographical mapping revealed this fact in the 1970s. Before then, the more popular Maple Mountain was thought to be higher."
+        "description": "Ishpatina ridge lies in <u><a class='info-link' href='https://en.wikipedia.org/wiki/Lady_Evelyn-Smoothwater_Provincial_Park' target='_blank'>Lady Evelyn-Smoothwater Provincial Park</a></u>. Due to its remote location, Ishpatina Ridge is a challenge to reach. It was only truly recognized as Ontario's highest point after federal government topographical mapping revealed this fact in the 1970s. Before then, the more popular <u><a class='info-link' href='https://en.wikipedia.org/wiki/Maple_Mountain_(Ontario)' target='_blank'>Maple Mountain</a></u> was thought to be higher."
       }
     },
     {
@@ -163,7 +178,7 @@ var elevation_places = {
         "name": "White Hill",
         "provterr": "Nova Scotia",
         "elevation": 535,
-        "description": "White Hill is a Canadian peak in the Cape Breton Highlands and is the highest elevation point in the province of Nova Scotia."
+        "description": "White Hill Located on a plateau 15 kilometres northwest of <u><a class='info-link' href='https://en.wikipedia.org/wiki/Ingonish' target='_blank'>Ingonish</a></u> and 30 kilometres northeast of <u><a class='info-link' href='https://en.wikipedia.org/wiki/Ch%C3%A9ticamp,_Nova_Scotia' target='_blank'>Cheticamp</a></u>, the peak is situated in the <u><a class='info-link' href='https://en.wikipedia.org/wiki/Cape_Breton_Highlands_National_Park' target='_blank'>Cape Breton Highlands National Park</a></u> and is accessible only by hiking."
       }
     },
     {
@@ -178,7 +193,7 @@ var elevation_places = {
         "name": "Glen Valley",
         "provterr": "Prince Edward Island",
         "elevation": 142,
-        "description": "Glen Valley is the highest point in Prince Edward Island."
+        "description": "Glen Valley is located in <u><a class='info-link' href='https://en.wikipedia.org/wiki/Queens_County,_Nova_Scotia' target='_blank'>Queens County</a></u>. The community on the hill is rather oddly named, being composed of two words suggesting a place lower than its surroundings: Glen Valley."
       }
     },
   ]

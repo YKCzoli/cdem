@@ -226,6 +226,10 @@ https://www.mapbox.com/api-documentation/#retrieve-tilejson-metadata
   color: #F5FFFA;
 }
 
+.info-link:visited {
+  color: #F5FFFA;
+}
+
 .info-link:hover {
   color: #75807C;
 }

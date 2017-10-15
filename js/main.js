@@ -14,6 +14,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWN6b2xpIiwiYSI6IjJkRURjVW8ifQ.VGeQDfYcDPlFWr
 
 // OGLC = open-government-licence-canada
 var attribution_OGLC = '<a href="http://open.canada.ca/en/open-government-licence-canada" target="_blank">Open Government Licence - Canada</a>';
+var attribution_wikipedia = '<a href="https://en.wikipedia.org/wiki/List_of_highest_points_of_Canadian_provinces_and_territories" target="_blank">Wikipedia</a>';
 
 var map_center = [-65, 71];
 
@@ -41,7 +42,7 @@ map.on('load', function() {
     'type': 'raster',
     'source': {
       'type': 'raster',
-      'attribution': attribution_OGLC,
+      'attribution': attribution_OGLC + ' | ' + attribution_wikipedia,
       'tiles': [
         'http://maps.geogratis.gc.ca/wms/elevation_en?&service=WMS&request=GetMap&layers=cdem.color-shaded-relief&styles=&format=image%2Fpng&transparent=true&version=1.1.1&height=256&width=256&srs=EPSG%3A3857&bbox={bbox-epsg-3857}'
       ],
@@ -88,7 +89,6 @@ elevation_places.features.forEach(function(marker, i) {
     var details = listing.appendChild(document.createElement('div'));
     details.setAttribute('id', 'active_details');
     details.innerHTML = marker.properties.description;
-
   });
 
   el.addEventListener('mouseenter', function(e) {
@@ -105,9 +105,7 @@ elevation_places.features.forEach(function(marker, i) {
 function flyToPeak(currentFeature) {
   map.flyTo({
     center: currentFeature.geometry.coordinates,
-    zoom: currentFeature.properties.zoom || 9,
-    // pitch: 60, // pitch in degrees
-    // bearing: -60, // bearing in degrees
+    zoom: currentFeature.properties.zoom || 8,
   });
 }
 
