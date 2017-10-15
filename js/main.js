@@ -15,8 +15,6 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWN6b2xpIiwiYSI6IjJkRURjVW8ifQ.VGeQDfYcDPlFWr
 // OGLC = open-government-licence-canada
 var attribution_OGLC = '<a href="http://open.canada.ca/en/open-government-licence-canada" target="_blank">Open Government Licence - Canada</a>';
 
-console.log($(window).width());
-
 var map_center = [-65, 71];
 
 if ($(window).width() === 768) {
