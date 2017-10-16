@@ -233,3 +233,7 @@ https://www.mapbox.com/api-documentation/#retrieve-tilejson-metadata
 .info-link:hover {
   color: #75807C;
 }
+
+.mapboxgl-ctrl-compass {
+  display: none !important;
+}
