@@ -105,7 +105,8 @@ elevation_places.features.forEach(function(marker, i) {
 function flyToPeak(currentFeature) {
   map.flyTo({
     center: currentFeature.geometry.coordinates,
-    zoom: currentFeature.properties.zoom || 8,
+    zoom: currentFeature.properties.zoom || 9,
+    offset: [-180, 0]
   });
 }
 
